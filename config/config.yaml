@@ -1,0 +1,30 @@
+log:
+  name: "requests"
+  logger_lev: "DEBUG"
+#  file_name: "log.txt"
+  stream_lev: "DEBUG"
+  file_lev: "INFO"
+
+excel:
+  file_name: "cases.xlsx"
+#  Sheet: ["注册","登录"]
+
+db:
+  host: "120.78.128.25"
+  user: "future"
+  password: "123456"
+  database: "futureloan"
+
+
+user:
+  mobile_phone: "17748622176"
+  pwd: "12345678"
+
+
+admin_user:
+  mobile_phone: "17888888888"
+  pwd: "12345678"
+
+other_user:
+  mobile_phone: "17748622177"
+  pwd: "12345678"
