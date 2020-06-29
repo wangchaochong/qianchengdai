@@ -28,3 +28,13 @@ admin_user:
 other_user:
   mobile_phone: "17748622177"
   pwd: "12345678"
+
+
+email_address:
+  smtp_server: smtp.qq.com
+  from_user: 1720574964@qq.com
+  from_pass_word: nmrxktepgeixdifa
+  to_user: ['819609179@qq.com','1720574964@qq.com']
+  subject: python自动化测试
+  contents: 邮件正文
+#  file_name:

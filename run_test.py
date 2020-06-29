@@ -3,6 +3,8 @@ import unittest
 from datetime import datetime
 from library.HTMLTestRunnerNew import HTMLTestRunner
 from config import config
+from middlerware.handler import Handler
+from common.email_hander import SendMailWithReport
 
 # 加载测试用例
 loader = unittest.TestLoader()
@@ -16,3 +18,5 @@ if __name__ == '__main__':
     with open(report_file, "wb") as f:
         runner = HTMLTestRunner(f, title="python自动化测试报告", description="测试详情", tester="小汪")
         runner.run(cases_suit)
+        SendMailWithReport.send_mail(**Handler.yaml_data["email_address"], file_name=report_file)
+        print("邮件发送成功")
