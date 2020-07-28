@@ -18,12 +18,16 @@ class TestWithdraw(unittest.TestCase):
     def setUpClass(cls):
         cls.token = Handler().token
         cls.member_id = Handler().member_id
+        cls.other_member_id = Handler().other_member_id
         cls.db = MySqlHandlerWare()
         sql = "SELECT leave_amount FROM member WHERE id = {};".format(cls.member_id)
         leave_amount_dict = cls.db.query(sql)
         leave_money = leave_amount_dict["leave_amount"]
         if leave_money < 501999.22 or leave_money >= 503500.22:
             cls.db.update("UPDATE member SET leave_amount = 501999.22 WHERE id = {};".format(cls.member_id))
+
+        if leave_money < 1000:
+            cls.db.update("UPDATE member SET leave_amount = 501999.22 WHERE id = {};".format(cls.other_member_id))
 
     # 前置条件、
     def setUp(self):
@@ -39,6 +43,9 @@ class TestWithdraw(unittest.TestCase):
 
         if "#member_id#" in test_info["data"]:
             test_info["data"] = test_info["data"].replace("#member_id#", str(self.member_id))
+
+        if "#other_member_id#" in test_info["data"]:
+            test_info["data"] = test_info["data"].replace("#other_member_id#", str(self.other_member_id))
 
         url = Handler.host + test_info["url"]
         sql = "select * from member where id = {};".format(self.member_id)

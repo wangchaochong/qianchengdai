@@ -1,6 +1,6 @@
 import json
 import os
-
+# from common.email_hander import send_mail
 import re
 from jsonpath import jsonpath
 from pymysql.cursors import DictCursor
@@ -22,6 +22,9 @@ class Handler():
     logger = get_logging(**yaml_data["log"], file_name=config.LOG_PATH)
     # 读取Excel表格
     excel = ExcelHandler(os.path.join(config.DATA_PATH, yaml_data["excel"]["file_name"]))
+
+    # 发送邮件
+    # send_mail = send_mail(**yaml_data["email_address"], file_name="")
 
     @property
     def token(self):
@@ -134,7 +137,9 @@ def replace_data(object, data):
 
 
 if __name__ == '__main__':
-    print(Handler().other_member_id)
+    # print(Handler.send_mail)
+    print(Handler().admin_)
+
     # print(audit_loan_id())
 
 

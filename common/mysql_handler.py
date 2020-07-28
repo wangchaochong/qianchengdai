@@ -33,7 +33,7 @@ class MysqlHandler():
     def update(self, sql):
         self.cur.execute(sql)
         self.con.commit()
-        self.close()
+        # self.close()
 
     def close(self):
         self.cur.close()

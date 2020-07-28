@@ -22,7 +22,7 @@ user:
 
 
 admin_user:
-  mobile_phone: "17888888888"
+  mobile_phone: "17748622100"
   pwd: "12345678"
 
 other_user:
@@ -38,3 +38,6 @@ email_address:
   subject: python自动化测试
   contents: 邮件正文
 #  file_name:
+
+
+

@@ -9,6 +9,7 @@ invest_data = Handler.excel.read_sheet("投资")
 # 初始化logger
 logger = Handler.logger
 
+
 @ddt.ddt
 class TestInvest(unittest.TestCase):
     def setUp(self):
@@ -36,8 +37,6 @@ class TestInvest(unittest.TestCase):
                      headers=json.loads(test_info["headers"]))
 
         expected = json.loads(test_info["expected"])
-        self.assertTrue(expected["code"] == resp["code"])
-        self.assertTrue(expected["msg"] == resp["msg"])
         if resp["code"] == 0:
             # 会生成一条投资id
             invest_id = resp["data"]["id"]
@@ -56,7 +55,11 @@ class TestInvest(unittest.TestCase):
             after_money = after_money_d["leave_amount"]
             invest_momey = Decimal(str(invest_momey))
             self.assertTrue(before_money - invest_momey == after_money)
-            logger.info("第{}条测试用例通过".format(test_info["case_id"]))
+
+        self.assertTrue(expected["code"] == resp["code"])
+        self.assertTrue(expected["msg"] == resp["msg"])
+        logger.info("第{}条测试用例通过".format(test_info["case_id"]))
+
 
 if __name__ == '__main__':
     unittest.main()
